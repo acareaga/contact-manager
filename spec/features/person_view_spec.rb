@@ -38,6 +38,17 @@ describe 'the person view', type: :feature do
     expect(page).to_not have_content(old_number)
   end
 
+  xit 'deletes a phone number' do
+    phone = person.phone_numbers.first
+    old_number = phone.number
+
+    first(:link, 'edit').click
+    page.fill_in('Number', with: '555-9191')
+    page.click_button('Delete')
+    expect(current_path).to eq(person_path(person))
+    expect(page).to_not have_content(old_number)
+  end
+
   it 'adds a new phone number' do
     page.click_link('Add phone number')
     page.fill_in('Number', with: '555-8888')
