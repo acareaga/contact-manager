@@ -14,7 +14,4 @@ RSpec.describe EmailAddress, type: :model do
   it 'is valid' do
     expect(email_address).to be_valid
   end
-
-
-
 end

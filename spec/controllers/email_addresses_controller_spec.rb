@@ -9,7 +9,7 @@ RSpec.describe EmailAddressesController, type: :controller do
   let(:invalid_attributes) {
     { address: nil, person_id: nil }
   }
-g
+
   let(:valid_session) { {} }
 
   describe "GET #index" do
