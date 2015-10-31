@@ -67,5 +67,13 @@ describe 'the person view', type: :feature do
     expect(page).to have_selector('li', text: 'johnsmith@gmail.com')
   end
 
+  it 'adds a new email address' do
+    page.click_link('Add email address')
+    page.fill_in('Address', with: 'johnsmith@gmail.com')
+    page.click_button('Create Email address')
+    expect(current_path).to eq(person_path(person))
+    expect(page).to have_content('johnsmith@gmail.com')
+  end
+
   end
 end
