@@ -38,11 +38,17 @@ describe 'the person view', type: :feature do
       expect(page).to_not have_content(old_number)
     end
 
+    it 'has links to delete phone numbers' do
+      person.phone_numbers.each do |phone|
+        expect(page).to have_link('delete', href: phone_number_path(phone))
+      end
+    end
+
     xit 'deletes a phone number' do
       phone = person.phone_numbers.first
       old_number = phone.number
 
-      page.click_button('Delete')
+      first(:link, 'delete').click
       expect(current_path).to eq(person_path(person))
       expect(page).to_not have_content(old_number)
     end
@@ -75,13 +81,13 @@ describe 'the person view', type: :feature do
     expect(page).to have_content('johnsmith@gmail.com')
   end
 
-  it 'has links to edit phone numbers' do
+  it 'has links to edit email addresses' do
     person.email_addresses.each do |address|
       expect(page).to have_link('edit', href: edit_email_address_path(address))
     end
   end
 
-  xit 'edits a email address' do
+  it 'edits a email address' do
     email = person.email_addresses.first
     old_email = email.address
 
@@ -91,6 +97,12 @@ describe 'the person view', type: :feature do
     expect(current_path).to eq(person_path(person))
     expect(page).to have_content('jimmysmith@gmail.com')
     expect(page).to_not have_content(old_email)
+  end
+
+  it 'has links to edit email addresses' do
+    person.email_addresses.each do |address|
+      expect(page).to have_link('delete', href: email_address_path(address))
+    end
   end
 
   xit 'deletes a email address' do
