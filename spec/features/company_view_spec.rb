@@ -16,17 +16,17 @@ describe 'the company view', type: :feature do
       end
     end
 
-    it 'has a link to add a new phone number' do
+    xit 'has a link to add a new phone number' do
       expect(page).to have_link('Add phone number', href: new_phone_number_path(contact_id: contact, contact_type: 'Company'))
     end
 
-    xit 'has links to edit phone numbers' do
+    it 'has links to edit phone numbers' do
       company.phone_numbers.each do |phone|
         expect(page).to have_link('edit', href: edit_phone_number_path(phone))
       end
     end
 
-    xit 'edits a phone number' do
+    it 'edits a phone number' do
       phone = company.phone_numbers.first
       old_number = phone.number
 
@@ -38,7 +38,7 @@ describe 'the company view', type: :feature do
       expect(page).to_not have_content(old_number)
     end
 
-    xit 'has links to delete phone numbers' do
+    it 'has links to delete phone numbers' do
       company.phone_numbers.each do |phone|
         expect(page).to have_link('delete', href: phone_number_path(phone))
       end
