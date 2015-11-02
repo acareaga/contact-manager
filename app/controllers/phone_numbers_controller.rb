@@ -14,7 +14,8 @@ class PhoneNumbersController < ApplicationController
 
   # GET /phone_numbers/new
   def new
-    @phone_number = PhoneNumber.new(contact_id: params[:contact_id], contact_type: params[:contact_type])
+    @phone_number = PhoneNumber.new(contact_id: params[:contact_id],
+                                    contact_type: params[:contact_type])
   end
 
   # GET /phone_numbers/1/edit
@@ -56,7 +57,7 @@ class PhoneNumbersController < ApplicationController
   def destroy
     @phone_number.destroy
     respond_to do |format|
-      format.html { redirect_to phone_numbers_url, notice: 'Phone number was successfully destroyed.' }
+      format.html { redirect_to @phone_number.contact, notice: 'Phone number was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
