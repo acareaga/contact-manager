@@ -44,7 +44,7 @@ describe 'the person view', type: :feature do
       end
     end
 
-    xit 'deletes a phone number' do
+    it 'deletes a phone number' do
       phone = person.phone_numbers.first
       old_number = phone.number
 
