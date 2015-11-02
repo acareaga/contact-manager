@@ -7,8 +7,12 @@
 
 <p>
   <strong>Person:</strong>
-  <%= @email_address.person_id %>
+  <%= @email_address.contact_id %>
 </p>
+
+<div class="field">
+  <%= f.hidden_field :contact_type %>
+</div>
 
 <%= link_to 'Edit', edit_email_address_path(@email_address) %> |
 <%= link_to 'Back', email_addresses_path %>
